@@ -19,9 +19,15 @@ runs().catch((err) => {
 }));
 
 async function runs() {
-  if (req.url.includes('token.php') && rsp.ad) {
-    rsp.ad.minor = [];
-    rsp.ad.major = [];
+  if (req.url.includes('token.php')) {
+    if (rsp.ad) {
+      rsp.ad.minor = [];
+      rsp.ad.major = [];
+    }
+    if (rsp.data && rsp.data.ad) {
+      rsp.data.ad.minor = [];
+      rsp.data.ad.major = [];
+    }  
   }
   if (req.url.includes('m3u8.php') && rsp.message) {
     await adURL('');
